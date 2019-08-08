@@ -2,6 +2,7 @@ import { assert } from 'chai';
 import exp from '../expected/homepage.exp';
 import sel from '../selectors/homepage.sel';
 import help from '../helpers/helpers';
+import regSel from '../selectors/register.sel';
 
 describe('Client', function () { //define suite title by passing a string
 
@@ -17,6 +18,8 @@ describe('Client', function () { //define suite title by passing a string
         assert.equal(title, exp.titleVersion); //compare {title} (actual) and "Bug Tracker" (expected)
       })
 
+  
+
 });
 
 
@@ -25,3 +28,14 @@ describe('Elements visible', function () {
 
    help.elementsVisible(Object.values(sel));
 });
+
+describe('Functional', function () {
+    it(sel.createAccBtn, function () { //define test title by passing a string
+        $(sel.createAccBtn).click();
+        let visible = $(regSel.h1).waitForDisplayed();
+    
+        assert.isTrue(visible);
+        })
+    
+ });
+ 
